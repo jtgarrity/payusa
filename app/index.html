@@ -1,0 +1,89 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>pay&middot;USA</title>
+        <meta name="description" content="Tax breakdown by budget function">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(.) styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+    </head>
+    <body ng-app="payusaApp" ng-controller="MainCtrl">
+        <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container">
+        
+        <div class="header">
+            <h3 class="text-muted">pay&middot;USA<i class="fa fa-flag fa-2x pull-right"></i></h3>
+        </div>
+        
+        <div>
+            <p class="lead">Type in your <em>total payments</em> (line 72) from your 1040 to see a breakdown of your federal taxes, or click <a ng-click="visible = true" ng-init="totaltax = averagetax">here</a> for the average American's results.</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-5">
+                <form class="navbar-form navbar-left">
+                    <div class="form-group input-append">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" placeholder="Total tax" ng-model="totaltax"/>
+                            <a class="input-group-btn" ng-click="visible = true"><button type="submit" class="btn btn-default">Onward!</button></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-7">
+                <dl ng-repeat="spend in spends" ng-show="visible" class="dl-horizontal show-hide">
+                  <dt>{{spend.category}}</dt>
+                  <dd>{{ totaltax * spend.percent | currency }}</dd>
+                </dl>
+            </div>
+        </div>
+        
+        <div ng-view="payusaApp"></div>
+        
+    </div>
+        
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            
+            ga('create', 'UA-XXXXX-X');
+            ga('send', 'pageview');
+        </script>
+        <!-- build:js(.) scripts/oldieshim.js -->
+        <!--[if lt IE 9]>
+        <script src="bower_components/es5-shim/es5-shim.js"></script>
+        <script src="bower_components/json3/lib/json3.min.js"></script>
+        <![endif]-->
+        <!-- endbuild -->
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/json3/lib/json3.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/about.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>
