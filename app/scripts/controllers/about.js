@@ -21,6 +21,7 @@ angular.module('payusaApp')
         {'category': 'Unclassified', 'percent': 0.008713},
         {'category': 'Interest Payments', 'percent': 0.063944}
     ];
+    $scope.predicate = '-percent';  
     $scope.visible = false;
     $scope.averagetax = 10000;
   });

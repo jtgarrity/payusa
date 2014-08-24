@@ -43,7 +43,7 @@
                 </form>
             </div>
             <div class="col-md-7">
-                <dl ng-repeat="spend in spends" ng-show="visible" class="dl-horizontal show-hide">
+                <dl ng-repeat="spend in spends | orderBy:predicate:reverse" ng-show="visible" class="dl-horizontal show-hide">
                   <dt>{{spend.category}}</dt>
                   <dd>{{ totaltax * spend.percent | currency }}</dd>
                 </dl>
