@@ -23,5 +23,5 @@ angular.module('payusaApp')
     ];
     $scope.predicate = '-percent';  
     $scope.visible = false;
-    $scope.averagetax = 10000;
+    $scope.averagetax = 11715;
   });

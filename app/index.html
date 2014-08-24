@@ -27,7 +27,7 @@
         </div>
         
         <div>
-            <p class="lead">Type in your <em>total payments</em> (line 72) from your 1040 to see a breakdown of your federal taxes, or click <a ng-click="visible = true" ng-init="totaltax = averagetax">here</a> for the average American's results.</p>
+            <p class="lead">Type in your <em>total payments</em> (line 72) from your 1040 to see a breakdown of your federal taxes, or click <a href="#" ng-click="visible = true; totaltax = averagetax">here</a> for the average American's results.</p>
         </div>
         
         <div class="row">
@@ -36,13 +36,13 @@
                     <div class="form-group input-append">
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
-                            <input type="text" class="form-control" placeholder="Total tax" ng-model="totaltax"/>
-                            <a class="input-group-btn" ng-click="visible = true"><button type="submit" class="btn btn-default">Onward!</button></a>
+                            <input type="text" class="form-control" placeholder="Total payments" ng-model="totaltax" fcsa-number/>
+                            <a class="input-group-btn" ng-click="visible = true"><button type="submit" class="btn btn-success">Onward!</button></a>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="col-md-7">
+            <div ng-cloak class="col-md-7">
                 <dl ng-repeat="spend in spends | orderBy:predicate:reverse" ng-show="visible" class="dl-horizontal show-hide">
                   <dt>{{spend.category}}</dt>
                   <dd>{{ totaltax * spend.percent | currency }}</dd>
@@ -78,6 +78,7 @@
         <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <script src="bower_components/angular-animate/angular-animate.js"></script>
         <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-fcsa-number/src/fcsaNumber.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:js({.tmp,app}) scripts/scripts.js -->

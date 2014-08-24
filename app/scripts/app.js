@@ -11,7 +11,8 @@
 angular
   .module('payusaApp', [
     'ngAnimate',
-    'ngRoute'
+    'ngRoute',
+    'fcsa-number'
   ])
   .config(function ($routeProvider) {
     $routeProvider
